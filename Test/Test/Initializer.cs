@@ -11,5 +11,10 @@ namespace PollAutomation.Hooks
         {
             Driver.Initialize();
         }
+        [AfterScenario()]
+        public void Terminate()
+        {
+            Driver.Terminate();
+        }
     }
 }

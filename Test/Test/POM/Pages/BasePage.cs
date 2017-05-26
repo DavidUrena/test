@@ -1,12 +1,16 @@
-﻿
-
-namespace Test.POM
+﻿namespace Test.POM
 {
     class BasePage
     {
-        public void OpenURL()
+        public static void OpenURL()
         {
             Driver.Instance.Navigate().GoToUrl(StaticComponents.URL);
+        }
+
+        public static bool PageSourceContains(string pageSourceCode)
+        {
+           return Driver.Instance.PageSource.Contains(pageSourceCode);
+
         }
     }
 }

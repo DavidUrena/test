@@ -16,7 +16,7 @@ Scenario: Verify not valid information
 	Given I open the URL
 	And I successfully complete all the fields with invalid information
 	When I press add
-	Then Erro validations should appear
+	Then Error validations should appear
 
 Scenario: Verify blank field validation
 	Given I open the URL

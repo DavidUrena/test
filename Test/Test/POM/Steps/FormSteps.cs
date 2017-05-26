@@ -1,4 +1,5 @@
-﻿using TechTalk.SpecFlow;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TechTalk.SpecFlow;
 
 namespace Test.POM.Steps
 {
@@ -8,7 +9,7 @@ namespace Test.POM.Steps
         [Given(@"I open the URL")]
         public void GivenIOpenTheURL()
         {
-            ScenarioContext.Current.Pending();
+            BasePage.OpenURL();
         }
         
         [Given(@"I successfully complete all the fields with valid information")]
@@ -44,9 +45,9 @@ namespace Test.POM.Steps
         [Then(@"I should access the form page")]
         public void ThenIShouldAccessTheFormPage()
         {
-            ScenarioContext.Current.Pending();
+            Assert.IsTrue(BasePage.PageSourceContains("page-wrapper"));
         }
-        
+
         [Then(@"I should be directed to the success page")]
         public void ThenIShouldBeDirectedToTheSuccessPage()
         {
