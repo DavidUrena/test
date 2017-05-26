@@ -9,39 +9,32 @@ namespace Test.POM.Steps
         [Given(@"I open the URL")]
         public void GivenIOpenTheURL()
         {
-            BasePage.OpenURL();
+            BasePage.OpenUrl();
         }
         
         [Given(@"I successfully complete all the fields with valid information")]
         public void GivenISuccessfullyCompleteAllTheFieldsWithValidInformation()
         {
-            ScenarioContext.Current.Pending();
+            BasePage.TypeDate("05/31/2018");
+            BasePage.TypePatientDocument("80759224");
+            BasePage.TypeDoctorDocument("80759224");
+            BasePage.TypeObervation("Lorem Ipsum");
         }
         
-        [Given(@"I successfully complete all the fields with invalid information")]
+        [Given(@"I successfully complete all the fields with invalid information in the documents")]
         public void GivenISuccessfullyCompleteAllTheFieldsWithInvalidInformation()
         {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Given(@"I successfully leave all the fields  blank")]
-        public void GivenISuccessfullyLeaveAllTheFieldsBlank()
-        {
-            ScenarioContext.Current.Pending();
+            BasePage.TypeDate("05/31/2018");
+            BasePage.TypePatientDocument("1");
+            BasePage.TypeDoctorDocument("1");
         }
         
         [When(@"I click on guardar")]
         public void WhenIClickOnGuardar()
         {
-            ScenarioContext.Current.Pending();
+            BasePage.SaveButtonClick();
         }
-        
-        [When(@"I press add")]
-        public void WhenIPressAdd()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
+
         [Then(@"I should access the form page")]
         public void ThenIShouldAccessTheFormPage()
         {
@@ -51,13 +44,14 @@ namespace Test.POM.Steps
         [Then(@"I should be directed to the success page")]
         public void ThenIShouldBeDirectedToTheSuccessPage()
         {
-            ScenarioContext.Current.Pending();
+            Assert.IsTrue(BasePage.PageSourceContains("Datos guardados correctamente"));
         }
         
         [Then(@"Error validations should appear")]
         public void ThenErroValidationsShouldAppear()
         {
-            ScenarioContext.Current.Pending();
+            Assert.IsTrue(BasePage.PageSourceContains("no se encuentra entre nuestros doctores"));
+            Assert.IsTrue(BasePage.PageSourceContains("no se encuentra entre nuestros pacientes"));
         }
     }
 }

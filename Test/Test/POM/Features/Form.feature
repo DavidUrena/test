@@ -14,12 +14,6 @@ Scenario: Successfully complete the form
 
 Scenario: Verify not valid information 
 	Given I open the URL
-	And I successfully complete all the fields with invalid information
-	When I press add
-	Then Error validations should appear
-
-Scenario: Verify blank field validation
-	Given I open the URL
-	And I successfully leave all the fields  blank
-	When I press add
+	And I successfully complete all the fields with invalid information in the documents
+	When I click on guardar
 	Then Error validations should appear

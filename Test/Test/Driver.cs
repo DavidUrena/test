@@ -13,25 +13,27 @@ namespace Test
 
         public static void Initialize()
         {
-            if (StaticComponents.browser.Equals("Chrome"))
-            {
-                Instance = new ChromeDriver();
-                Instance.Manage().Window.Maximize();
-                Instance.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromMinutes(5));
-            }
-            else if (StaticComponents.browser.Equals("Firefox"))
-            {
-                {
-                    Instance = new FirefoxDriver();
-                    Instance.Manage().Window.Maximize();
-                    Instance.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromMinutes(5));
-                }
-            }
+
+            Instance = new ChromeDriver();
+            Instance.Manage().Window.Maximize();
+            Instance.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromMinutes(5));
         }
-        
-        public static void Terminate() 
+
+        public static void Terminate()
         {
             Instance.Quit();
         }
-}
+
+        public static IWebElement GetElement(By by)
+        {
+            try
+            {
+                return Driver.Instance.FindElement(by);
+            }
+            catch (NoSuchElementException)
+            {
+                return null;
+            }
+        }
+    }
 }

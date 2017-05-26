@@ -5,7 +5,6 @@ namespace Test.POM
 {
     class StaticComponents
     {
-        public static readonly string browser = ConfigurationManager.AppSettings["Browser"];
-        public static readonly string URL = ConfigurationManager.AppSettings["Url"];
+        public static readonly string Url = ConfigurationManager.AppSettings["Url"];
     }
 }
